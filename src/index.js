@@ -7,7 +7,7 @@ import App from './components/App';
 import reducer from './reducers'
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import './components/styles/index.css'
+import './styles/index.css'
 const theme = createTheme({
   palette: {
     primary: {
@@ -16,7 +16,8 @@ const theme = createTheme({
     }
   },
   typography: {
-    h4: { color: '#ae7575' }
+    h4: { color: '#ae7575' },
+    h2: { color: '#c33d3d', textAlign: 'center', fontSize: '1.7rem' }
   }
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

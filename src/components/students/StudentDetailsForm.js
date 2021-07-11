@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 import { Field, reset, reduxForm } from 'redux-form';
 import { Avatar, Button, CssBaseline, TextField, Typography, Container, withStyles } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { StudentDetailsFormStyles } from '../styles/styles';
+import { StudentDetailsFormStyles } from '../../styles/styles';
 
 class studentDetailsForm extends Component {
     state = { openAlert: false }
-    renderError({ error, touched }) {
-        if (touched && error) {
-            return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>);
-        }
-    }
+
     renderInput = ({ input, label, meta }) => {
         return (
             <TextField

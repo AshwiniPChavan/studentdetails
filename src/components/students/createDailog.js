@@ -4,7 +4,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { connect } from 'react-redux';
 import { createStudentDetails } from '../../actions';
 import StudentDetailsForm from './StudentDetailsForm';
-import { CreateDailogStyles } from '../styles/styles';
+import { CreateDailogStyles } from '../../styles/styles';
 
 class CreateStudentDetails extends Component {
 

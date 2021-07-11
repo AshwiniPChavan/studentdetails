@@ -3,7 +3,7 @@ import Student from './students/Student';
 import { Grid, Button, Typography } from '@material-ui/core';
 import CreateDailog from './students/createDailog';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppStyles } from "../components/styles/styles";
+import { AppStyles } from "../styles/styles";
 
 const useStyles = makeStyles(AppStyles);
 export default function App() {

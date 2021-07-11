@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteStudent, fetchstudentsDetails } from '../../actions';
-import { Box, List, withStyles, Grid } from '@material-ui/core';
+import { Box, List, withStyles, Grid, Typography } from '@material-ui/core';
 import Pagination from "@material-ui/lab/Pagination";
 import SearchBar from "material-ui-search-bar";
 import ListComponent from './ListComponent';
 import DeleteDailog from './DeleteDailog';
-import { StudentStyles } from '../styles/styles';
+import { StudentStyles } from '../../styles/styles';
 
 
 const itemsPerPage = 5;
@@ -44,7 +44,7 @@ class ListStudentDetails extends Component {
         const filteredItems = this.props.students.filter((item) => {
             return item.name.toLowerCase().includes(searchedVal.toLowerCase());
         });
-        this.setState({ data: filteredItems })
+        this.setState({ noOfPages: Math.ceil(filteredItems.length / itemsPerPage), data: filteredItems })
     };
 
     cancelSearch = () => {
@@ -70,18 +70,18 @@ class ListStudentDetails extends Component {
         const { classes } = this.props;
         return (
             <>
-                <Grid item xs={12} sm={6} style={{ justifyContent: 'center', display: 'flex' }}>
+                <Grid item xs={12} sm={6} className={classes.serachGrid}>
                     <SearchBar
                         className={classes.search} value={this.state.searched}
                         onChange={(searchVal) => this.requestSearch(searchVal)}
                         onCancelSearch={() => this.cancelSearch()}
-                        placeholder="filter"
+                        placeholder="filter by name"
                     />
                 </Grid>
                 <Grid item xs={12} className={classes.ulGrid}>
                     <List > <ListComponent handleDeleteOpen={this.handleDeleteOpen} data={this.state.data} classes={classes} page={this.state.page} itemsPerPage={itemsPerPage} />  </List>
                     <Box component="span">
-                        <Pagination
+                        {(this.state.data.length >= 1) ? <Pagination
                             count={this.state.noOfPages}
                             page={this.state.page}
                             onChange={this.handleChange}
@@ -89,7 +89,10 @@ class ListStudentDetails extends Component {
                             color="primary"
                             size="large"
                             classes={{ ul: classes.paginator }}
-                        />
+                        /> :
+                            <Typography variant='h2'>No Data Found!</Typography>
+                        }
+
                     </Box>
                 </Grid>
                 {this.state.delete && <DeleteDailog open={this.state.delete} handleDeleteClick={this.handleDeleteClick} handleDeleteClose={this.handleDeleteClose} setRefresh={this.props.setRefresh} />}

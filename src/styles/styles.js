@@ -1,7 +1,7 @@
 export const AppStyles = {
     root: { margin: '0 !important' },
     headerGrid: { justifyContent: 'center', display: 'flex', marginTop: '1rem' },
-    header: { letterSpacing: '0.5em', fontSize: '2rem' },
+    header: { letterSpacing: '0.5em', fontSize: '2rem', textAlign: 'center' },
     buttonGrid: { justifyContent: 'center', display: 'flex' },
     button: { height: '2.5rem' }
 }
@@ -24,6 +24,9 @@ export const StudentStyles = theme => ({
     paginator: {
         justifyContent: "center",
         padding: "10px"
+    },
+    serachGrid: {
+        justifyContent: 'center', display: 'flex'
     },
     search: {
         height: '2.5rem'
